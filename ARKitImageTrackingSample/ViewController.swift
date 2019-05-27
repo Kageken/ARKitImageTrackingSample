@@ -142,6 +142,6 @@ extension Float {
         return String(format: "%.2f", self)
     }
     var rad2deg: Float {
-        return self * 64.6972
+        return self * 57.296
     }
 }
