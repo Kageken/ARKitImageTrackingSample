@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 
+//MARK: - ViewController
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
@@ -61,8 +62,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var arNode = SCNNode()
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         if let imageAnchor = anchor as? ARImageAnchor {
-            //目的の画像に青い面を被せる
+            //目的の画像に平面を被せる
             let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
+            //plane.firstMaterial?.diffuse.contents = UIColor.blue
             plane.firstMaterial?.diffuse.contents = img
             let planeNode = SCNNode(geometry: plane)
             planeNode.eulerAngles.x = -.pi / 2
@@ -134,6 +136,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
 }
 
+// MARK: - extension
 extension Float {
     var prec2: String {
         return String(format: "%.2f", self)
